@@ -2,7 +2,7 @@
   "name": "honi-demo",
   "version": "1.0.0",
   "private": true,
-  "description": "Honi showcase \u2014 stateful support, incident commander, multi-agent research pipeline",
+  "description": "Honi showcase — stateful support, incident commander, multi-agent research pipeline",
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "honidev": "latest"
+    "honidev": "^0.5.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241230.0",

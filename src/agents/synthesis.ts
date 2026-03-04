@@ -45,7 +45,7 @@ const extractKeyInsights = tool({
 
 export const synthesisAgent = createAgent({
   name: 'synthesis',
-  model: 'claude-sonnet-4-5',
+  model: 'gemini-2.5-flash',
   memory: { enabled: false }, // Stateless — orchestrated per-request
   binding: 'SYNTHESIS_DO',
   tools: [structureReport, extractKeyInsights] as unknown as ToolDefinition[],

@@ -122,7 +122,7 @@ const getTicket = tool({
 
 export const supportAgent = createAgent({
   name: 'nexus-support',
-  model: 'claude-sonnet-4-5',
+  model: 'gemini-2.5-flash',
   memory: { enabled: true },
   binding: 'SUPPORT_DO',
   tools: [lookupAccount, checkSubscription, listTickets, createTicket, getTicket] as unknown as ToolDefinition[],

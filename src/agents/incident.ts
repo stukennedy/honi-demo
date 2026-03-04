@@ -174,7 +174,7 @@ const listIncidents = tool({
 
 export const incidentAgent = createAgent({
   name: 'incident-commander',
-  model: 'claude-sonnet-4-5',
+  model: 'gemini-2.5-flash',
   memory: { enabled: true },
   binding: 'INCIDENT_DO',
   tools: [declareIncident, updateStatus, addTimelineNote, assignResponder, getIncident, listIncidents] as unknown as ToolDefinition[],

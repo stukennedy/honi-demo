@@ -95,7 +95,7 @@ const compareOptions = tool({
 
 export const analystAgent = createAgent({
   name: 'analyst',
-  model: 'claude-sonnet-4-5',
+  model: 'gemini-2.5-flash',
   memory: { enabled: false }, // Sub-agents are stateless — orchestrator holds state
   binding: 'ANALYST_DO',
   tools: [analyzeTopic, identifyTrends, compareOptions] as unknown as ToolDefinition[],
