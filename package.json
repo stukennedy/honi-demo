@@ -2,7 +2,7 @@
   "name": "honi-demo",
   "version": "1.0.0",
   "private": true,
-  "description": "Vela Support Bot — a demo app built with @stukennedy/honi",
+  "description": "Honi showcase \u2014 stateful support, incident commander, multi-agent research pipeline",
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
@@ -14,8 +14,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@stukennedy/honi": "latest",
-    "zod": "^3.23.0"
+    "honidev": "latest"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241230.0",

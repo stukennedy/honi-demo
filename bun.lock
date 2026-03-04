@@ -5,8 +5,7 @@
     "": {
       "name": "honi-demo",
       "dependencies": {
-        "honi-cf": "latest",
-        "zod": "^3.23.0",
+        "honidev": "latest",
       },
       "devDependencies": {
         "@cloudflare/workers-types": "^4.20241230.0",
@@ -194,7 +193,7 @@
 
     "glob-to-regexp": ["glob-to-regexp@0.4.1", "", {}, "sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw=="],
 
-    "honi-cf": ["honi-cf@0.4.0", "", { "dependencies": { "@ai-sdk/anthropic": "^1.0.0", "@ai-sdk/openai": "^1.0.0", "ai": "^4.0.0", "hono": "^4.0.0", "zod": "^3.23.0" }, "peerDependencies": { "@ai-sdk/cloudflare": ">=0.0.1" }, "optionalPeers": ["@ai-sdk/cloudflare"], "bin": { "honi": "bin/honi.js" } }, "sha512-VynzIZXvpUm9WqIOH94HcgA5zV6tgqch4qeJTipgDKWTmtjbxZtILeZ4UkiIRDawuoQdPJ47qKCrxd658RJifQ=="],
+    "honidev": ["honidev@0.5.0", "", { "dependencies": { "@ai-sdk/anthropic": "^1.0.0", "@ai-sdk/openai": "^1.0.0", "ai": "^4.0.0", "hono": "^4.0.0", "zod": "^3.23.0", "zod-to-json-schema": "^3.25.1" }, "peerDependencies": { "@ai-sdk/cloudflare": ">=0.0.1" }, "optionalPeers": ["@ai-sdk/cloudflare"], "bin": { "honi": "bin/honi.js" } }, "sha512-ZroFyRwi82R+kV5eU17fNDq5eARFDNubJ0aoEnkTMhY49WezaWhQnYyf9TE3Na8KQm8K+lv/QVtS60y4P98BPw=="],
 
     "hono": ["hono@4.12.5", "", {}, "sha512-3qq+FUBtlTHhtYxbxheZgY8NIFnkkC/MR8u5TTsr7YZ3wixryQ3cCwn3iZbg8p8B88iDBBAYSfZDS75t8MN7Vg=="],
 

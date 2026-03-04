@@ -1,11 +1,24 @@
-name = 'honi-demo'
-main = 'src/index.ts'
-compatibility_date = '2024-09-23'
-compatibility_flags = ['nodejs_compat']
+name = "honi-demo"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
 
 [durable_objects]
-bindings = [{ name = 'VELA_SUPPORT_DO', class_name = 'VelaSupportDO' }]
+bindings = [
+  { name = "SUPPORT_DO",   class_name = "SupportDO"   },
+  { name = "INCIDENT_DO",  class_name = "IncidentDO"  },
+  { name = "ANALYST_DO",   class_name = "AnalystDO"   },
+  { name = "SYNTHESIS_DO", class_name = "SynthesisDO" },
+]
 
 [[migrations]]
-tag = 'v1'
-new_classes = ['VelaSupportDO']
+tag = "v1"
+new_classes = ["VelaSupportDO"]
+
+[[migrations]]
+tag = "v2"
+deleted_classes = ["VelaSupportDO"]
+new_classes = ["SupportDO", "IncidentDO", "AnalystDO", "SynthesisDO"]
+
+[vars]
+ENVIRONMENT = "production"

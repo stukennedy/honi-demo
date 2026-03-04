@@ -10,7 +10,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist",
-    "declaration": true,
+    "declaration": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noUnusedLocals": false,
