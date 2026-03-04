@@ -1,0 +1,25 @@
+{
+  "name": "honi-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Vela Support Bot — a demo app built with @stukennedy/honi",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stukennedy/honi-demo.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@stukennedy/honi": "^0.3.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241230.0",
+    "typescript": "^5.7.0",
+    "wrangler": "^3.99.0"
+  }
+}
