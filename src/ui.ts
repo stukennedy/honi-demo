@@ -30,7 +30,7 @@ a{color:inherit;text-decoration:none}
 .topbar-link:hover{border-color:var(--amber);color:var(--amber)}
 
 /* ── Main grid ── */
-.main{display:grid;grid-template-columns:220px 1fr 260px;overflow:hidden}
+.main{display:grid;grid-template-columns:220px 1fr 260px;overflow:hidden;height:100%;min-height:0}
 @media(max-width:900px){.main{grid-template-columns:1fr}.sidebar,.info-panel{display:none}}
 
 /* ── Sidebar ── */
@@ -50,7 +50,7 @@ a{color:inherit;text-decoration:none}
 .agent-sub{font-size:11px;color:var(--muted);margin-top:1px}
 
 /* ── Chat panel ── */
-.chat-panel{display:flex;flex-direction:column;overflow:hidden}
+.chat-panel{display:flex;flex-direction:column;overflow:hidden;min-height:0;height:100%}
 .chat-header{padding:16px 20px 12px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0}
 .chat-header-top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
 .chat-agent-indicator{width:10px;height:10px;border-radius:50%;flex-shrink:0}
@@ -109,7 +109,7 @@ a{color:inherit;text-decoration:none}
 .clear-btn:hover{border-color:var(--red);color:var(--red)}
 
 /* ── Research pipeline view ── */
-.research-panel{display:flex;flex-direction:column;overflow:hidden}
+.research-panel{display:flex;flex-direction:column;overflow:hidden;min-height:0;height:100%}
 .research-header{padding:16px 20px 12px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0}
 .research-body{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:16px}
 .pipeline-viz{display:flex;flex-direction:column;gap:8px;padding:16px;background:var(--surface);border:1px solid var(--border);border-radius:8px}
