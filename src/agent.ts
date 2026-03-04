@@ -89,7 +89,7 @@ const createTask = tool({
 
 const agent = createAgent({
   name: 'vela-support',
-  model: 'claude-haiku-3-5',
+  model: 'claude-3-5-haiku-20241022',
   memory: { enabled: true },
   tools: [getProjectStatus, listTasks, createTask] as unknown as ToolDefinition[],
   binding: 'VELA_SUPPORT_DO',
