@@ -1,5 +1,5 @@
-import { createAgent, tool, z } from 'honi-cf';
-import type { ToolDefinition } from 'honi-cf';
+import { createAgent, tool, z } from '@stukennedy/honi';
+import type { ToolDefinition } from '@stukennedy/honi';
 
 const getProjectStatus = tool({
   name: 'get_project_status',

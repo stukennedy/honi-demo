@@ -393,7 +393,7 @@ export function getChatHTML(): string {
   </div>
 </div>
 
-<div class="badge">Powered by <a href="https://www.npmjs.com/package/honi-cf" target="_blank">Honi</a> &#x1F41D;</div>
+<div class="badge">Powered by <a href="https://www.npmjs.com/package/@stukennedy/honi" target="_blank">Honi</a> &#x1F41D;</div>
 
 <script>
 const threadId = 'thread-' + Math.random().toString(36).slice(2, 10);
