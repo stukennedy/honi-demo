@@ -3,7 +3,7 @@ export function getDemoHTML(): string {
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
 <title>Honi — Demo Showcase</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -17,10 +17,11 @@ export function getDemoHTML(): string {
   --body:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 }
 html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--body)}
+@supports(height:100dvh){html,body{height:100dvh}}
 a{color:inherit;text-decoration:none}
 
 /* ── Layout ── */
-.shell{display:grid;grid-template-rows:56px 1fr;height:100vh;overflow:hidden}
+.shell{display:grid;grid-template-rows:56px 1fr;height:100vh;height:100dvh;overflow:hidden}
 .topbar{display:flex;align-items:center;gap:16px;padding:0 20px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0}
 .logo{display:flex;align-items:center;gap:8px}
 .logo-hex{flex-shrink:0}
@@ -97,7 +98,7 @@ a{color:inherit;text-decoration:none}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 
 /* Input */
-.chat-footer{padding:16px 20px;border-top:1px solid var(--border);background:var(--surface);flex-shrink:0}
+.chat-footer{padding:16px 20px;padding-bottom:max(16px,env(safe-area-inset-bottom));border-top:1px solid var(--border);background:var(--surface);flex-shrink:0}
 .input-wrap{display:flex;gap:10px;align-items:flex-end}
 .input-area{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;font-family:var(--body);color:var(--text);resize:none;outline:none;transition:border-color .2s;max-height:120px;min-height:42px;line-height:1.5}
 .input-area::placeholder{color:var(--muted)}
@@ -124,7 +125,7 @@ a{color:inherit;text-decoration:none}
 .result-card-title{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim)}
 .result-card-body{padding:14px;font-size:13px;line-height:1.7;color:var(--dim);white-space:pre-wrap}
 .result-card-body strong{color:var(--text)}
-.research-input-wrap{display:flex;gap:10px;padding:16px 20px;border-top:1px solid var(--border);background:var(--surface);flex-shrink:0}
+.research-input-wrap{display:flex;gap:10px;padding:16px 20px;padding-bottom:max(16px,env(safe-area-inset-bottom));border-top:1px solid var(--border);background:var(--surface);flex-shrink:0}
 .research-input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;font-family:var(--body);color:var(--text);outline:none;transition:border-color .2s}
 .research-input:focus{border-color:var(--blue)}
 .research-input::placeholder{color:var(--muted)}
