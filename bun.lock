@@ -5,7 +5,7 @@
     "": {
       "name": "honi-demo",
       "dependencies": {
-        "honidev": "0.5.2",
+        "honidev": "0.5.3",
       },
       "devDependencies": {
         "@cloudflare/workers-types": "^4.20241230.0",
@@ -195,7 +195,7 @@
 
     "glob-to-regexp": ["glob-to-regexp@0.4.1", "", {}, "sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw=="],
 
-    "honidev": ["honidev@0.5.2", "", { "dependencies": { "@ai-sdk/anthropic": "^1.0.0", "@ai-sdk/google": "^1.0.0", "@ai-sdk/openai": "^1.0.0", "ai": "^4.0.0", "hono": "^4.0.0", "zod": "^3.23.0", "zod-to-json-schema": "^3.25.1" }, "peerDependencies": { "@ai-sdk/azure": ">=1.0.0", "@ai-sdk/cloudflare": ">=0.0.1", "@ai-sdk/cohere": ">=1.0.0", "@ai-sdk/deepseek": ">=1.0.0", "@ai-sdk/groq": ">=1.0.0", "@ai-sdk/mistral": ">=1.0.0", "@ai-sdk/perplexity": ">=1.0.0", "@ai-sdk/togetherai": ">=1.0.0", "@ai-sdk/xai": ">=1.0.0" }, "optionalPeers": ["@ai-sdk/azure", "@ai-sdk/cloudflare", "@ai-sdk/cohere", "@ai-sdk/deepseek", "@ai-sdk/groq", "@ai-sdk/mistral", "@ai-sdk/perplexity", "@ai-sdk/togetherai", "@ai-sdk/xai"], "bin": { "honi": "bin/honi.js" } }, "sha512-UMTkZDJxJa009h/ipsRJn8pPE40v0c2/4VeqKQGuEK7biRVWHe3EHHhC+BFgIxD8qNzbzr5Ox41caNwLQgBNZw=="],
+    "honidev": ["honidev@0.5.3", "", { "dependencies": { "@ai-sdk/anthropic": "^1.0.0", "@ai-sdk/google": "^1.0.0", "@ai-sdk/openai": "^1.0.0", "ai": "^4.0.0", "hono": "^4.0.0", "zod": "^3.23.0", "zod-to-json-schema": "^3.25.1" }, "peerDependencies": { "@ai-sdk/azure": ">=1.0.0", "@ai-sdk/cloudflare": ">=0.0.1", "@ai-sdk/cohere": ">=1.0.0", "@ai-sdk/deepseek": ">=1.0.0", "@ai-sdk/groq": ">=1.0.0", "@ai-sdk/mistral": ">=1.0.0", "@ai-sdk/perplexity": ">=1.0.0", "@ai-sdk/togetherai": ">=1.0.0", "@ai-sdk/xai": ">=1.0.0" }, "optionalPeers": ["@ai-sdk/azure", "@ai-sdk/cloudflare", "@ai-sdk/cohere", "@ai-sdk/deepseek", "@ai-sdk/groq", "@ai-sdk/mistral", "@ai-sdk/perplexity", "@ai-sdk/togetherai", "@ai-sdk/xai"], "bin": { "honi": "bin/honi.js" } }, "sha512-WlJs+Yo9OVxfMfpCtNrIEFyvRNekFSEC27R6/Lchshiixvyg47X8Ter77FK1KaF0t/HHZLV8Q5rP3ZV6WOszxg=="],
 
     "hono": ["hono@4.12.5", "", {}, "sha512-3qq+FUBtlTHhtYxbxheZgY8NIFnkkC/MR8u5TTsr7YZ3wixryQ3cCwn3iZbg8p8B88iDBBAYSfZDS75t8MN7Vg=="],
 

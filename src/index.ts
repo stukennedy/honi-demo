@@ -3,9 +3,10 @@ import { supportAgent, SupportDO } from './agents/support';
 import { incidentAgent, IncidentDO } from './agents/incident';
 import { AnalystDO } from './agents/analyst';
 import { SynthesisDO } from './agents/synthesis';
+import { knowledgeAgent, KnowledgeDO, seedGraph } from './agents/knowledge';
 import { getDemoHTML } from './ui';
 
-export { SupportDO, IncidentDO, AnalystDO, SynthesisDO };
+export { SupportDO, IncidentDO, AnalystDO, SynthesisDO, KnowledgeDO };
 
 // ── Env type ───────────────────────────────────────────────
 interface Env {
@@ -13,6 +14,10 @@ interface Env {
   INCIDENT_DO: DurableObjectNamespace;
   ANALYST_DO: DurableObjectNamespace;
   SYNTHESIS_DO: DurableObjectNamespace;
+  KNOWLEDGE_DO: DurableObjectNamespace;
+  EDGRAPH: { fetch: (req: Request) => Promise<Response> };
+  EDGRAPH_URL: string;
+  EDGRAPH_API_KEY: string;
 }
 
 // ── Research pipeline ──────────────────────────────────────
@@ -64,6 +69,8 @@ export default {
 
     // ── Serve UI ──
     if (pathname === '/' && request.method === 'GET') {
+      // Seed graph lazily on first page load (no-op if already seeded)
+      ctx.waitUntil(seedGraph(env.EDGRAPH_URL, env.EDGRAPH_API_KEY).catch(console.error));
       return new Response(getDemoHTML(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' },
       });
@@ -102,6 +109,16 @@ export default {
       } catch (err) {
         return Response.json({ error: (err as Error).message }, { status: 500 });
       }
+    }
+
+    // ── Knowledge graph agent ──
+    // Routes: /knowledge/chat, /knowledge/history
+    if (pathname.startsWith('/knowledge/')) {
+      const subReq = new Request(
+        request.url.replace('/knowledge', ''),
+        request,
+      );
+      return knowledgeAgent.fetch(subReq as any, env, ctx);
     }
 
     // ── MCP endpoints — expose all agent tools ──

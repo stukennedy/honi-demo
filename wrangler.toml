@@ -9,6 +9,7 @@ bindings = [
   { name = "INCIDENT_DO",  class_name = "IncidentDO"  },
   { name = "ANALYST_DO",   class_name = "AnalystDO"   },
   { name = "SYNTHESIS_DO", class_name = "SynthesisDO" },
+  { name = "KNOWLEDGE_DO", class_name = "KnowledgeDO" },
 ]
 
 [[migrations]]
@@ -20,5 +21,14 @@ tag = "v2"
 deleted_classes = ["VelaSupportDO"]
 new_classes = ["SupportDO", "IncidentDO", "AnalystDO", "SynthesisDO"]
 
+[[migrations]]
+tag = "v3"
+new_classes = ["KnowledgeDO"]
+
+[[services]]
+binding = "EDGRAPH"
+service = "edgraph"
+
 [vars]
 ENVIRONMENT = "production"
+EDGRAPH_URL = "https://edgraph.continuata.workers.dev"

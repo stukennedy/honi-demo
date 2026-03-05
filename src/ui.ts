@@ -12,7 +12,7 @@ export function getDemoHTML(): string {
   --text:#F8FAFC;--dim:#94A3B8;--muted:#475569;
   --amber:#F59E0B;--amber-dim:rgba(245,158,11,0.12);--amber-glow:rgba(245,158,11,0.25);
   --blue:#60A5FA;--green:#34D399;--red:#F87171;--purple:#A78BFA;
-  --support:#F59E0B;--incident:#F87171;--research:#60A5FA;
+  --support:#F59E0B;--incident:#F87171;--research:#60A5FA;--knowledge:#A78BFA;
   --radius:8px;--mono:'JetBrains Mono','Fira Code',monospace;
   --body:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 }
@@ -46,6 +46,8 @@ a{color:inherit;text-decoration:none}
 .agent-btn[data-agent=incident].active .agent-dot{background:var(--red)}
 .agent-btn[data-agent=research].active{background:rgba(96,165,250,0.1);color:var(--text)}
 .agent-btn[data-agent=research].active .agent-dot{background:var(--blue)}
+.agent-btn[data-agent=knowledge].active{background:rgba(167,139,250,0.1);color:var(--text)}
+.agent-btn[data-agent=knowledge].active .agent-dot{background:var(--knowledge)}
 .agent-dot{width:8px;height:8px;border-radius:50%;background:var(--border);flex-shrink:0;transition:background .2s}
 .agent-name{font-weight:500}
 .agent-sub{font-size:11px;color:var(--muted);margin-top:1px}
@@ -68,6 +70,7 @@ a{color:inherit;text-decoration:none}
 .msg.assistant .msg-avatar{background:var(--amber-dim);border:1px solid rgba(245,158,11,0.25);font-size:14px}
 .msg[data-agent=incident] .msg-avatar{background:rgba(248,113,113,0.1);border-color:rgba(248,113,113,0.25)}
 .msg[data-agent=research] .msg-avatar{background:rgba(96,165,250,0.1);border-color:rgba(96,165,250,0.25)}
+.msg[data-agent=knowledge] .msg-avatar{background:rgba(167,139,250,0.1);border-color:rgba(167,139,250,0.25)}
 .msg-body{flex:1;min-width:0}
 .msg-meta{font-size:11px;color:var(--muted);margin-bottom:4px;font-family:var(--mono)}
 .msg-text{font-size:14px;line-height:1.7;color:var(--text)}
@@ -144,6 +147,8 @@ a{color:inherit;text-decoration:none}
 .feature-badge[data-type=incident].active-feature .badge-dot{background:var(--red)}
 .feature-badge[data-type=research].active-feature{border-color:var(--blue);background:rgba(96,165,250,0.1)}
 .feature-badge[data-type=research].active-feature .badge-dot{background:var(--blue)}
+.feature-badge[data-type=knowledge].active-feature{border-color:var(--knowledge);background:rgba(167,139,250,0.1)}
+.feature-badge[data-type=knowledge].active-feature .badge-dot{background:var(--knowledge)}
 .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--muted);flex-shrink:0;margin-top:4px}
 .badge-text{color:var(--dim);line-height:1.5}
 .badge-text strong{color:var(--text);display:block;margin-bottom:2px}
@@ -167,7 +172,7 @@ a{color:inherit;text-decoration:none}
       </svg>
       <span class="logo-name">HONI</span>
     </div>
-    <span class="topbar-meta">demo showcase · 4 durable objects · 3 agents</span>
+    <span class="topbar-meta">demo showcase · 5 durable objects · 4 agents</span>
     <a href="https://honi.dev/docs/getting-started" target="_blank" class="topbar-link">docs ↗</a>
   </header>
 
@@ -199,6 +204,13 @@ a{color:inherit;text-decoration:none}
             <div class="agent-sub">Multi-agent · Orchestration</div>
           </div>
         </button>
+        <button class="agent-btn" data-agent="knowledge" onclick="switchAgent('knowledge')">
+          <span class="agent-dot"></span>
+          <div>
+            <div class="agent-name">People Intelligence</div>
+            <div class="agent-sub">Graph memory · edgraph</div>
+          </div>
+        </button>
       </div>
       <div class="sidebar-section">
         <div class="sidebar-label">Architecture</div>
@@ -206,7 +218,8 @@ a{color:inherit;text-decoration:none}
           SUPPORT_DO<br>
           INCIDENT_DO<br>
           ANALYST_DO<br>
-          SYNTHESIS_DO
+          SYNTHESIS_DO<br>
+          KNOWLEDGE_DO
         </div>
       </div>
       <div class="sidebar-section">
@@ -295,6 +308,32 @@ a{color:inherit;text-decoration:none}
       </div>
     </div>
 
+    <!-- Knowledge graph agent -->
+    <div id="panel-knowledge" class="chat-panel" style="display:none">
+      <div class="chat-header">
+        <div class="chat-header-top">
+          <div class="chat-agent-indicator" style="background:var(--knowledge)"></div>
+          <div class="chat-agent-name">People Intelligence</div>
+        </div>
+        <div class="chat-agent-desc">Graph memory powered by <strong>edgraph</strong> — an edge-native property graph on Cloudflare DOs. This agent builds a persistent knowledge graph of people, companies, and relationships. Every connection it learns is stored as a graph edge and retrieved via traversal.</div>
+        <div class="prompts">
+          <button class="prompt-chip" onclick="sendPrompt('knowledge','Who is Alice Chen connected to?')">Alice's network</button>
+          <button class="prompt-chip" onclick="sendPrompt('knowledge','How is Bob Martinez connected to Carol White?')">Bob → Carol path</button>
+          <button class="prompt-chip" onclick="sendPrompt('knowledge','Who does Horizon Ventures invest in?')">Horizon portfolio</button>
+          <button class="prompt-chip" onclick="sendPrompt('knowledge','Add Sarah Kim — Head of Sales at TechCorp, reports to Alice Chen')">Add person</button>
+        </div>
+      </div>
+      <div id="messages-knowledge" class="chat-messages"></div>
+      <div class="chat-footer">
+        <div class="input-wrap">
+          <button class="clear-btn" onclick="clearHistory('knowledge')">clear</button>
+          <textarea id="input-knowledge" class="input-area" placeholder="Ask about connections, add people, explore the graph…" rows="1"
+            onkeydown="handleKey(event,'knowledge')" oninput="autoResize(this)"></textarea>
+          <button class="send-btn" id="send-knowledge" onclick="sendMessage('knowledge')">↑</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Info panel -->
     <aside class="info-panel" id="info-panel">
       <!-- Populated by JS -->
@@ -308,6 +347,7 @@ a{color:inherit;text-decoration:none}
 const threadIds = {
   support: 'demo-support-' + Math.random().toString(36).slice(2,8),
   incident: 'demo-incident-main',
+  knowledge: 'demo-knowledge-' + Math.random().toString(36).slice(2,8),
 };
 let currentAgent = 'support';
 let sending = {};
@@ -364,6 +404,16 @@ const AGENTS = {
     ],
     snippet: '<span class="cm">// Worker-level orchestration</span>\\n<span class="kw">const</span> analyst = <span class="kw">await</span> <span class="fn">routeToAgent</span>(\\n  env, { binding: <span class="str">\\'ANALYST_DO\\'</span> }, query\\n)\\n<span class="kw">const</span> report = <span class="kw">await</span> <span class="fn">routeToAgent</span>(\\n  env, { binding: <span class="str">\\'SYNTHESIS_DO\\'</span> },\\n  analyst.response\\n)',
   },
+  knowledge: {
+    label: 'People Intelligence', color: 'var(--knowledge)', emoji: '🕸',
+    endpoint: '/knowledge/chat', historyEndpoint: '/knowledge/history',
+    features: [
+      { label: 'Graph Memory', desc: 'memory.graph — entities and relationships stored in edgraph (DO-backed property graph) and retrieved via traversal', active: true, type: 'knowledge' },
+      { label: 'ToolContext', desc: 'ctx.graph available inside tool handlers — tools read/write the graph as they execute', active: true, type: 'knowledge' },
+      { label: 'Edge-Native', desc: 'edgraph runs multi-hop BFS/DFS inside a single Durable Object — zero per-hop network cost', active: true, type: 'knowledge' },
+    ],
+    snippet: '<span class="kw">const</span> agent = <span class="fn">createAgent</span>({\\n  memory: {\\n    graph: {\\n      enabled: <span class="kw">true</span>,\\n      graphId: <span class="str">\\'demo-knowledge\\'</span>,\\n      binding: <span class="str">\\'EDGRAPH\\'</span>, <span class="cm">// CF service binding</span>\\n      apiKeyEnvVar: <span class="str">\\'EDGRAPH_API_KEY\\'</span>,\\n    }\\n  },\\n  tools: [addPerson, addRelationship,\\n          getNetwork, findPath],\\n})',
+  },
 };
 
 // ── Info panel ────────────────────────────────────────────
@@ -396,7 +446,7 @@ function switchAgent(agent) {
   currentAgent = agent;
   document.querySelectorAll('.agent-btn').forEach(b => b.classList.remove('active'));
   document.querySelector(\`[data-agent=\${agent}]\`).classList.add('active');
-  ['support','incident','research'].forEach(a => {
+  ['support','incident','research','knowledge'].forEach(a => {
     document.getElementById('panel-'+a).style.display = a === agent ? 'flex' : 'none';
   });
   renderInfoPanel(agent);
