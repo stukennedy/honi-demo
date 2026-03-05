@@ -342,7 +342,7 @@ const AGENTS = {
       { label: 'Tool Calling', desc: 'lookup_account, check_subscription, list_tickets, create_ticket, get_ticket — 5 real tools', active: true },
       { label: 'MCP Endpoint', desc: '/support/mcp/tools exposes all tools for Claude Desktop / Cursor', active: false },
     ],
-    snippet: '<span class="kw">const</span> agent = <span class="fn">createAgent</span>({\n  name: <span class="str">\\'nexus-support\\'</span>,\n  model: <span class="str">\\'claude-sonnet-4-5\\'</span>,\n  memory: { enabled: <span class="kw">true</span> },\n  tools: [lookupAccount, checkSubscription,\n          listTickets, createTicket],\n  binding: <span class="str">\\'SUPPORT_DO\\'</span>,\n})',
+    snippet: '<span class="kw">const</span> agent = <span class="fn">createAgent</span>({\\n  name: <span class="str">\\'nexus-support\\'</span>,\\n  model: <span class="str">\\'gemini-2.5-flash\\'</span>,\\n  memory: { enabled: <span class="kw">true</span> },\\n  tools: [lookupAccount, checkSubscription,\\n          listTickets, createTicket],\\n  binding: <span class="str">\\'SUPPORT_DO\\'</span>,\\n})',
   },
   incident: {
     label: 'Incident Commander', color: 'var(--incident)', emoji: '🚨',
@@ -352,7 +352,7 @@ const AGENTS = {
       { label: 'Long-Running Context', desc: 'Agent maintains full incident timeline in DO memory, resumable at any time', active: true, type: 'incident' },
       { label: 'Stateful Tool Calls', desc: 'Tools mutate shared incident state (declare, update, add notes, resolve)', active: true, type: 'incident' },
     ],
-    snippet: '<span class="kw">const</span> agent = <span class="fn">createAgent</span>({\n  name: <span class="str">\\'incident-commander\\'</span>,\n  model: <span class="str">\\'claude-sonnet-4-5\\'</span>,\n  memory: { enabled: <span class="kw">true</span> },\n  binding: <span class="str">\\'INCIDENT_DO\\'</span>,\n  tools: [declareIncident, updateStatus,\n          addTimelineNote, assignResponder],\n})',
+    snippet: '<span class="kw">const</span> agent = <span class="fn">createAgent</span>({\\n  name: <span class="str">\\'incident-commander\\'</span>,\\n  model: <span class="str">\\'gemini-2.5-flash\\'</span>,\\n  memory: { enabled: <span class="kw">true</span> },\\n  binding: <span class="str">\\'INCIDENT_DO\\'</span>,\\n  tools: [declareIncident, updateStatus,\\n          addTimelineNote, assignResponder],\\n})',
   },
   research: {
     label: 'Research Pipeline', color: 'var(--research)', emoji: '🔬',
@@ -361,7 +361,7 @@ const AGENTS = {
       { label: 'routeToAgent', desc: 'routeToAgent(env, { binding: "ANALYST_DO" }, query) — direct DO-to-DO calls', active: true, type: 'research' },
       { label: 'Specialist Agents', desc: 'Each DO has a focused system prompt + dedicated toolset for its role', active: true, type: 'research' },
     ],
-    snippet: '<span class="cm">// Worker-level orchestration</span>\n<span class="kw">const</span> analyst = <span class="kw">await</span> <span class="fn">routeToAgent</span>(\n  env, { binding: <span class="str">\\'ANALYST_DO\\'</span> }, query\n)\n<span class="kw">const</span> report = <span class="kw">await</span> <span class="fn">routeToAgent</span>(\n  env, { binding: <span class="str">\\'SYNTHESIS_DO\\'</span> },\n  analyst.response\n)',
+    snippet: '<span class="cm">// Worker-level orchestration</span>\\n<span class="kw">const</span> analyst = <span class="kw">await</span> <span class="fn">routeToAgent</span>(\\n  env, { binding: <span class="str">\\'ANALYST_DO\\'</span> }, query\\n)\\n<span class="kw">const</span> report = <span class="kw">await</span> <span class="fn">routeToAgent</span>(\\n  env, { binding: <span class="str">\\'SYNTHESIS_DO\\'</span> },\\n  analyst.response\\n)',
   },
 };
 
